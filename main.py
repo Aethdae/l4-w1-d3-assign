@@ -1,4 +1,5 @@
 import math
+import json
 
 from string import hexdigits
 from random import random
@@ -18,12 +19,21 @@ list_of_codes = []
 
 while running:
     try:
-        entry = input("Please enter the length of the hex string to generate or codes to see generated codes:\n")
+        entry = input("Please enter the length of the hex string to generate, codes to see generated codes, or print to push the codes to a file:\n")
 
         if entry == "codes" or entry == "code":
-            print(f"\nAll generated codes:")
+            print(f"All generated codes:")
             for code in list_of_codes:
                 print(f"{code}")
+        elif entry == "print":
+            print("Adding to file: codes.json...")
+            f = open("codes.json", "w")
+            codes = {}
+            for i in range(len(list_of_codes)):
+                codes[i] = list_of_codes[i]
+            json_str = json.dumps(codes)
+            f.write(json_str)
+            f.close()
         elif int(entry):
             code = create_hex_code(int(entry))
             list_of_codes.append(code)

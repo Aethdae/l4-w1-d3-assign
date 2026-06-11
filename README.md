@@ -15,3 +15,9 @@ to start the environment, depending on the path inside the environment.
 Then run
 `py main.py`
 to start the app.
+
+## Commands
+
+- number - create a hex string of number length
+- codes - lists the current list of strings
+- print - push the codes to codes.json
